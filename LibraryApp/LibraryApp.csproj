@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{91CE513B-5856-4E2C-9A36-00A68312599E}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <RootNamespace>LibraryApp</RootNamespace>
     <AssemblyName>LibraryApp</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -61,11 +61,29 @@
     <Compile Include="EmptyBook.Designer.cs">
       <DependentUpon>EmptyBook.cs</DependentUpon>
     </Compile>
+    <Compile Include="InventoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryForm.Designer.cs">
+      <DependentUpon>InventoryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryListOfBooksForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryListOfBooksForm.Designer.cs">
+      <DependentUpon>InventoryListOfBooksForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainAdminForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainAdminForm.Designer.cs">
       <DependentUpon>MainAdminForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReadNowForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReadNowForm.Designer.cs">
+      <DependentUpon>ReadNowForm.cs</DependentUpon>
     </Compile>
     <Compile Include="RegistrationForm.cs">
       <SubType>Form</SubType>
@@ -75,6 +93,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SearchForm.Designer.cs">
+      <DependentUpon>SearchForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Sections.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,8 +111,17 @@
     <EmbeddedResource Include="EmptyBook.resx">
       <DependentUpon>EmptyBook.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="InventoryForm.resx">
+      <DependentUpon>InventoryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryListOfBooksForm.resx">
+      <DependentUpon>InventoryListOfBooksForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainAdminForm.resx">
       <DependentUpon>MainAdminForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReadNowForm.resx">
+      <DependentUpon>ReadNowForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RegistrationForm.resx">
       <DependentUpon>RegistrationForm.cs</DependentUpon>
@@ -102,6 +135,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SearchForm.resx">
+      <DependentUpon>SearchForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Sections.resx">
       <DependentUpon>Sections.cs</DependentUpon>
     </EmbeddedResource>

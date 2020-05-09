@@ -13,11 +13,14 @@ namespace LibraryApp
 {
     public partial class Sections : Form
     {
-        public Library Library { set; get; }
-        public Sections(Library library)
+        public Library Library { private set; get; }
+        public bool IsAdmin { private set; get; }
+        public Sections(Library library, bool isAdmin)
         {
             Library = library;
+            IsAdmin = isAdmin;
             InitializeComponent();
+            this.Text = "Sections";
             list_of_genres.Text = "Genre";
             foreach (Genre genre in Library.Genres)
             {
@@ -29,18 +32,30 @@ namespace LibraryApp
 
         private void books_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
             this.Hide();
-            new EmptyBook(Library, getBook()).ShowDialog(this);
+            new EmptyBook(Library, IsAdmin, getBook()).ShowDialog(this);
             this.Show();
+            printListOfBooks();
+
         }
         public Book getBook()
         {
             foreach (Book thisBook in Library.Books)
             {
-                if (thisBook.Id == Library.ListOfBooks(list_of_genres.Text)[books.SelectedIndex].Id)
+                if (thisBook.Id == Library.ListOfBooksByGenre(getGenre().Id)[books.SelectedIndex].Id)
                 {
                     return thisBook;
+                }
+            }
+            return null;
+        }
+        public Genre getGenre()
+        {
+            foreach (Genre thisGenre in Library.Genres)
+            {
+                if (thisGenre.Id == Library.Genres[list_of_genres.SelectedIndex].Id)
+                {
+                    return thisGenre;
                 }
             }
             return null;
@@ -48,13 +63,30 @@ namespace LibraryApp
 
         private void list_of_genres_SelectedIndexChanged(object sender, EventArgs e)
         {
+            printListOfBooks();
+        }
+        public void printListOfBooks()
+        {
             books.Items.Clear();
-            Book[] listbox_elements = Library.ListOfBooks(list_of_genres.Text);
-            foreach(Book book in listbox_elements)
+            Book[] listbox_elements = Library.ListOfBooksByGenre(getGenre().Id);
+            foreach (Book book in listbox_elements)
             {
                 books.Items.Add(book.Name);
             }
+            if(books.Items.Count == 0)
+            {
+                list_of_genres.Items.Clear();
+                foreach (Genre genre in Library.Genres)
+                {
+                    list_of_genres.Items.Add(genre.Name);
+                }
+            }
             books.Show();
+        }
+
+        private void menu_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

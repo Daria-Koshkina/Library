@@ -18,6 +18,7 @@ namespace LibraryApp
         {
             Library = library;
             InitializeComponent();
+            this.Text = "Authorization";
         }
 
         private void log_in_Click(object sender, EventArgs e)
@@ -29,7 +30,12 @@ namespace LibraryApp
                     if(Library.CurrentUser is Admin)
                     {
                         this.Hide();
-                        new MainAdminForm(Library).ShowDialog(this);
+                        new MainAdminForm(Library, true).ShowDialog(this);
+                    }
+                    else
+                    {
+                        this.Hide();
+                        new MainAdminForm(Library, false).ShowDialog(this);
                     }
                 }
                 else
@@ -65,6 +71,16 @@ namespace LibraryApp
         {
             this.Hide();
             (new RegistrationForm(Library)).ShowDialog(this);
+        }
+
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            string caption = "Application closing";
+            string message = "Are you sure that you would like to close this application?";
+            if(MessageBox.Show(message, caption, MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
     }
 }

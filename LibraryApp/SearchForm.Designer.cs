@@ -1,6 +1,6 @@
 ﻿namespace LibraryApp
 {
-    partial class Sections
+    partial class SearchForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,58 +28,68 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.list_of_genres = new System.Windows.Forms.ComboBox();
+            this.textBoxSearch = new System.Windows.Forms.TextBox();
+            this.buttonSearch = new System.Windows.Forms.Button();
             this.books = new System.Windows.Forms.ListBox();
             this.menu = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // list_of_genres
+            // textBoxSearch
             // 
-            this.list_of_genres.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.list_of_genres.FormattingEnabled = true;
-            this.list_of_genres.Location = new System.Drawing.Point(175, 12);
-            this.list_of_genres.Name = "list_of_genres";
-            this.list_of_genres.Size = new System.Drawing.Size(121, 21);
-            this.list_of_genres.TabIndex = 0;
-            this.list_of_genres.SelectedIndexChanged += new System.EventHandler(this.list_of_genres_SelectedIndexChanged);
+            this.textBoxSearch.Location = new System.Drawing.Point(22, 13);
+            this.textBoxSearch.Name = "textBoxSearch";
+            this.textBoxSearch.Size = new System.Drawing.Size(364, 20);
+            this.textBoxSearch.TabIndex = 0;
+            // 
+            // buttonSearch
+            // 
+            this.buttonSearch.Location = new System.Drawing.Point(393, 13);
+            this.buttonSearch.Name = "buttonSearch";
+            this.buttonSearch.Size = new System.Drawing.Size(69, 20);
+            this.buttonSearch.TabIndex = 1;
+            this.buttonSearch.Text = "Search";
+            this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
             // books
             // 
             this.books.FormattingEnabled = true;
-            this.books.Location = new System.Drawing.Point(12, 52);
+            this.books.Location = new System.Drawing.Point(22, 53);
             this.books.Name = "books";
-            this.books.Size = new System.Drawing.Size(299, 368);
-            this.books.TabIndex = 1;
+            this.books.Size = new System.Drawing.Size(266, 368);
+            this.books.TabIndex = 2;
             this.books.SelectedIndexChanged += new System.EventHandler(this.books_SelectedIndexChanged);
             // 
             // menu
             // 
-            this.menu.Location = new System.Drawing.Point(369, 385);
+            this.menu.Location = new System.Drawing.Point(358, 382);
             this.menu.Name = "menu";
-            this.menu.Size = new System.Drawing.Size(103, 35);
-            this.menu.TabIndex = 2;
+            this.menu.Size = new System.Drawing.Size(114, 39);
+            this.menu.TabIndex = 3;
             this.menu.Text = "Menu";
             this.menu.UseVisualStyleBackColor = true;
             this.menu.Click += new System.EventHandler(this.menu_Click);
             // 
-            // Sections
+            // SearchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 450);
             this.Controls.Add(this.menu);
             this.Controls.Add(this.books);
-            this.Controls.Add(this.list_of_genres);
-            this.Name = "Sections";
-            this.Text = "Sections";
+            this.Controls.Add(this.buttonSearch);
+            this.Controls.Add(this.textBoxSearch);
+            this.Name = "SearchForm";
+            this.Text = "SearchForm";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.ComboBox list_of_genres;
+        private System.Windows.Forms.TextBox textBoxSearch;
+        private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.ListBox books;
         private System.Windows.Forms.Button menu;
     }

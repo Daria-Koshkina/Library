@@ -53,12 +53,14 @@ namespace LibraryFramework.Models
             if (isAdmin)
             {
                 Admin admin = new Admin(name, login, passwordHash);
+                CurrentUser = admin;
                 Admins.Add(admin);
                 adminsDao.Save(Admins);
             }
             else
             {
                 Guest guest = new Guest(name, login, passwordHash);
+                CurrentUser = guest;
                 Guests.Add(guest);
                 guestsDao.Save(Guests);
             }
@@ -101,18 +103,23 @@ namespace LibraryFramework.Models
             {
                 if(book.Id == id)
                 {
+                    Guid authorId = book.Author.Id;
+                    Guid genreId = book.Genre.Id;
                     Books.Remove(book);
                     booksDao.Save(Books);
+                    this.deleteAutor(authorId);
+                    this.deleteGenre(genreId);
+                    
                     break;
                 }
             }
         }
-        public Book[] ListOfBooks(string genreName)
+        public Book[] ListOfBooksByGenre(Guid id)
         {
             List<Book> list = new List<Book>();
             foreach(Book book in Books)
             {
-                if (book.Genre.Name == genreName) list.Add(book);
+                if (book.Genre.Id == id) list.Add(book);
             }
             Book[] books = new Book[list.Count];
             for(int i = 0; i < books.Length; i++)
@@ -120,6 +127,18 @@ namespace LibraryFramework.Models
                 books[i] = list[i];
             }
             return books;
+        }
+        public Book[] ListOfBooksByAuthor(Guid id)
+        {
+            List<Book> books = new List<Book>();
+            foreach(Book book in Books)
+            {
+                if (book.Author.Id == id)
+                {
+                    books.Add(book);
+                }
+            }
+            return books.ToArray();
         }
 
         public Book[] Search(string query)
@@ -140,6 +159,15 @@ namespace LibraryFramework.Models
             }
             return false;
         }
+        public List<Book> GetBooksReadNow()
+        {
+            List<Book> books = new List<Book>();
+            foreach(Book book in Books)
+            {
+                if (book.userId == CurrentUser.Id) books.Add(book);
+            }
+            return books;
+        }
         public void getBook(Book book)
         {
             if (book.userId == Guid.Empty)
@@ -156,6 +184,27 @@ namespace LibraryFramework.Models
                 booksDao.Save(Books);
             }
         }
+        public void pressLike(Book book)
+        {
+            foreach (Guid userId in book.likedBy)
+            {
+                if (userId == CurrentUser.Id) return;
+            }
+            book.likedBy.Add(CurrentUser.Id);
+            booksDao.Save(Books);
+        }
+        public void removeLike(Book book)
+        {
+            for(int i = 0; i < book.likedBy.Count; i++)
+            {
+                if (book.likedBy[i] == CurrentUser.Id)
+                {
+                    book.likedBy.Remove(CurrentUser.Id);
+                    booksDao.Save(Books);
+                }
+            }
+        }
+
         private Author GetAuthor(string authorName)
         {
             foreach (Author a in Authors)
@@ -177,6 +226,52 @@ namespace LibraryFramework.Models
             Genres.Add(genre);
             genresDao.Save(Genres);
             return genre;
+        }
+        private void deleteAutor(Guid authorId)
+        {
+            int counter = 0;
+            foreach(Book book in Books)
+            {
+                if (book.Author.Id == authorId)
+                {
+                    counter++;
+                }
+            }
+            if(counter == 0)
+            {
+                foreach(Author author in Authors)
+                {
+                    if(author.Id == authorId)
+                    {
+                        Authors.Remove(author);
+                        authorsDao.Save(Authors);
+                        break;
+                    }
+                }
+            }
+        }
+        private void deleteGenre(Guid genreId)
+        {
+            int counter = 0;
+            foreach (Book book in Books)
+            {
+                if (book.Genre.Id == genreId)
+                {
+                    counter++;
+                }
+            }
+            if (counter == 0)
+            {
+                foreach (Genre genre in Genres)
+                {
+                    if (genre.Id == genreId)
+                    {
+                        Genres.Remove(genre);
+                        genresDao.Save(Genres);
+                        break;
+                    }
+                }
+            }
         }
     }
 }

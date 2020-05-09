@@ -14,12 +14,21 @@ namespace LibraryApp
     public partial class EmptyBook : Form
     {
         public Library Library { private set; get; }
+        public bool IsAdmin { private set; get; }
         public Book Book { set; get; }
-        public EmptyBook(Library library, Book book = null)
+        public EmptyBook(Library library, bool isAdmin, Book book = null)
         {
             Library = library;
+            IsAdmin = isAdmin;
             Book = book;
             InitializeComponent();
+            if(Book != null) this.Text = $"Book {Book.Name}";
+            else this.Text = "Book";
+            if(IsAdmin == false)
+            {
+                delete_book.Hide();
+            }
+
             if (Book != null)
             {
                 author.Text = Book.Author.Name;
@@ -36,6 +45,15 @@ namespace LibraryApp
                 {
                     read_now.Checked = true;
                 }
+                foreach(Guid userId in Book.likedBy)
+                {
+                    if(userId == Library.CurrentUser.Id)
+                    {
+                        press_like.Checked = true;
+                        break;
+                    }
+                }
+                number_of_likes.Text = $"{book.likedBy.Count} people liked this book";
             }
             AddGenres();
             this.Hide();
@@ -92,6 +110,10 @@ namespace LibraryApp
                     {
                         Library.getBook(currentBook);
                     }
+                    if (press_like.Checked)
+                    {
+                        Library.pressLike(currentBook);
+                    }
                 }
                 else
                 {
@@ -100,6 +122,11 @@ namespace LibraryApp
                         Library.getBook(Book);
                     }
                     else Library.returnBook(Book);
+                    if (press_like.Checked)
+                    {
+                        Library.pressLike(Book);
+                    }
+                    else Library.removeLike(Book);
                 }
                 this.Hide();
             }
@@ -118,6 +145,25 @@ namespace LibraryApp
                     read_now.Checked = false;
                 }
             }
+        }
+
+        private void delete_book_Click(object sender, EventArgs e)
+        {
+            string caption = "Deleting book";
+            string message = "Are you sure that you would like to delete this book?";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result = MessageBox.Show(message, caption, buttons);
+            if (result == DialogResult.Yes)
+            {
+                Library.DeleteBook(Book.Id);
+                this.Hide();
+            }
+            
+        }
+
+        private void press_like_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

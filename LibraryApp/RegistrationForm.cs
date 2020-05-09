@@ -18,6 +18,7 @@ namespace LibraryApp
         {
             Library = library;
             InitializeComponent();
+            this.Text = "Registration";
             this.Hide();
         }
 
@@ -71,13 +72,24 @@ namespace LibraryApp
                     if (isAdmin)
                     {
                         this.Hide();
-                        (new MainAdminForm(Library)).ShowDialog(this);
+                        new MainAdminForm(Library, true).ShowDialog(this);
+                    }
+                    else
+                    {
+                        this.Hide();
+                        new MainAdminForm(Library, false).ShowDialog(this);
                     }
                 } else
                 {
-                    // todo
+                    
                 }
             }
+        }
+
+        private void back_to_authorizatione_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new AuthorizationForm(Library).ShowDialog(this);
         }
     }
 }
