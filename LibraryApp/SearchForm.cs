@@ -15,6 +15,7 @@ namespace LibraryApp
     {
         public Library Library { private set; get; }
         public bool IsAdmin { private set; get; }
+        public Book[] SearchBooks { private set; get; }
         public SearchForm(Library library, bool isAdmin)
         {
             Library = library;
@@ -25,8 +26,12 @@ namespace LibraryApp
 
         private void buttonSearch_Click(object sender, EventArgs e)
         {
-            if (textBoxSearch.Text.Length == 0) return;
-            printListOfBooks();
+            string searchString = textBoxSearch.Text.Trim();
+            if (searchString.Length == 0) return;
+
+            SearchBooks = Library.Search(searchString);
+            Library.SortBookName(SearchBooks);
+            UpdateListOfBooks();
         }
 
         private void books_SelectedIndexChanged(object sender, EventArgs e)
@@ -34,13 +39,13 @@ namespace LibraryApp
             this.Hide();
             new EmptyBook(Library, IsAdmin, getBook()).ShowDialog(this);
             this.Show();
-            printListOfBooks();
+            UpdateListOfBooks();
         }
         public Book getBook()
         {
             foreach (Book thisBook in Library.Books)
             {
-                if (thisBook.Id == Library.Search(textBoxSearch.Text)[books.SelectedIndex].Id)
+                if (thisBook.Id == SearchBooks[books.SelectedIndex].Id)
                 {
                     return thisBook;
                 }
@@ -48,11 +53,10 @@ namespace LibraryApp
             return null;
         }
 
-        public void printListOfBooks()
+        public void UpdateListOfBooks()
         {
             books.Items.Clear();
-            Book[] searchBooks = Library.Search(textBoxSearch.Text);
-            foreach (Book book in searchBooks)
+            foreach (Book book in SearchBooks)
             {
                 books.Items.Add($"{book.Name} {book.Author.Name}");
             }

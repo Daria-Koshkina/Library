@@ -15,6 +15,9 @@ namespace LibraryApp
     {
         public Library Library { private set; get; }
         public bool IsAdmin { private set; get; }
+        public Book[] BooksList { private set; get; }
+        public Author[] AuthorsList { private set; get; }
+        public Genre[] GenresList { private set; get; }
         public InventoryForm(Library library, bool isAdmin)
         {
             Library = library;
@@ -24,30 +27,36 @@ namespace LibraryApp
             list.Hide();
             sortedByAuthor.Checked = false;
         }
-        public void printListOfBooks()
+        public void UpdateListOfBooks()
         {
+            BooksList = Library.Books.ToArray();
+            Library.SortBookName(BooksList);
             list.Items.Clear();
-            foreach (Book book in Library.Books)
+            foreach (Book book in BooksList)
             {
                 list.Items.Add(book.Name);
             }
             number_of_books.Text = $"In this Library there are {Library.Books.Count} book/books.";
             list.Show();
         }
-        public void printListOfAuthors()
+        public void UpdateListOfAuthors()
         {
+            AuthorsList = Library.Authors.ToArray();
+            Library.SortAuthorName(AuthorsList);
             list.Items.Clear();
-            foreach (Author author in Library.Authors)
+            foreach (Author author in AuthorsList)
             {
                 list.Items.Add(author.Name);
             }
             number_of_books.Text = $"In this Library there are {Library.Books.Count} book/books.";
             list.Show();
         }
-        public void printListOfGenres()
+        public void UpdateListOfGenres()
         {
+            GenresList = Library.Genres.ToArray();
+            Library.SortGenreName(GenresList);
             list.Items.Clear();
-            foreach (Genre genre in Library.Genres)
+            foreach (Genre genre in GenresList)
             {
                 list.Items.Add(genre.Name);
             }
@@ -58,7 +67,7 @@ namespace LibraryApp
         {
             foreach (Book thisBook in Library.Books)
             {
-                if (thisBook.Id == Library.Books[list.SelectedIndex].Id)
+                if (thisBook.Id == BooksList[list.SelectedIndex].Id)
                 {
                     return thisBook;
                 }
@@ -69,7 +78,7 @@ namespace LibraryApp
         {
             foreach (Author thisAuthor in Library.Authors)
             {
-                if (thisAuthor.Id == Library.Authors[list.SelectedIndex].Id)
+                if (thisAuthor.Id == AuthorsList[list.SelectedIndex].Id)
                 {
                     return thisAuthor;
                 }
@@ -80,7 +89,7 @@ namespace LibraryApp
         {
             foreach (Genre thisGenre in Library.Genres)
             {
-                if (thisGenre.Id == Library.Genres[list.SelectedIndex].Id)
+                if (thisGenre.Id == GenresList[list.SelectedIndex].Id)
                 {
                     return thisGenre;
                 }
@@ -93,17 +102,17 @@ namespace LibraryApp
             if (sortedByName.Checked)
             {
                 new EmptyBook(Library, IsAdmin, getBook()).ShowDialog(this);
-                printListOfBooks();
+                UpdateListOfBooks();
             }
             if (sortedByAuthor.Checked)
             {
                 new InventoryListOfBooksForm(Library, IsAdmin, getAuthor().Id, true).ShowDialog(this);
-                printListOfAuthors();
+                UpdateListOfAuthors();
             }
             if(sortedByGenre.Checked)
             {
                 new InventoryListOfBooksForm(Library, IsAdmin, getGenre().Id, false).ShowDialog(this);
-                printListOfGenres();
+                UpdateListOfGenres();
             }
            
         }
@@ -111,13 +120,13 @@ namespace LibraryApp
         {
             if (sortedByName.Checked)
             {
-                printListOfBooks();
+                UpdateListOfBooks();
             }
             else if (sortedByAuthor.Checked)
             {
-                printListOfAuthors();
+                UpdateListOfAuthors();
             }
-            else printListOfGenres();
+            else UpdateListOfGenres();
         }
 
         private void menu_Click(object sender, EventArgs e)

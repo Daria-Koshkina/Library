@@ -15,13 +15,14 @@ namespace LibraryApp
     {
         public Library Library { private set; get; }
         public bool IsAdmin { private set; get; }
+        public Book[] BooksReadNow { private set; get; }
         public ReadNowForm(Library library, bool isAdmin)
         {
             Library = library;
             IsAdmin = isAdmin;
             InitializeComponent();
             this.Text = "Reading now";
-            printListOfLikedBooks();
+            UpdateListOfLikedBooks();
             list_of_books.ScrollAlwaysVisible = true;
         }
 
@@ -30,23 +31,25 @@ namespace LibraryApp
             this.Hide();
             new EmptyBook(Library, IsAdmin, getBook()).ShowDialog(this);
             this.Show();
-            printListOfLikedBooks();
+            UpdateListOfLikedBooks();
         }
         public Book getBook()
         {
             foreach (Book thisBook in Library.Books)
             {
-                if (thisBook.Id == Library.GetBooksReadNow()[list_of_books.SelectedIndex].Id)
+                if (thisBook.Id == BooksReadNow[list_of_books.SelectedIndex].Id)
                 {
                     return thisBook;
                 }
             }
             return null;
         }
-        public void printListOfLikedBooks()
+        public void UpdateListOfLikedBooks()
         {
             list_of_books.Items.Clear();
-            foreach (Book book in Library.GetBooksReadNow())
+            BooksReadNow = Library.GetBooksReadNow().ToArray();
+            Library.SortBookName(BooksReadNow);
+            foreach (Book book in BooksReadNow)
             {
                 list_of_books.Items.Add(book.Name);
             }

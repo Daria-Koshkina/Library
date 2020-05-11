@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 namespace LibraryFramework.Models
 
 {
+    /// <summary>
+    /// This is the main class. It consist of a few collection of objects. Collection of books, of authors, of genres, of admins and guests.
+    /// </summary>
     public class Library
     {
         public List<Admin> Admins { private set; get; }
@@ -17,6 +20,9 @@ namespace LibraryFramework.Models
         public List<Author> Authors { private set; get; }
         public User CurrentUser { private set; get; }
 
+        /// <summary>
+        /// The following private properties create collections of elements of the Dao class for working with data.
+        /// </summary>
         private Dao<Admin> adminsDao = new Dao<Admin>("admin.bin");
         private Dao<Guest> guestsDao = new Dao<Guest>("guest.bin");
         private Dao<Book> booksDao = new Dao<Book>("book.bin");
@@ -34,6 +40,10 @@ namespace LibraryFramework.Models
             CurrentUser = null;
         }
 
+        /// <summary>
+        /// This method creates test data and fills the library. 
+        /// </summary>
+        /// <param name="n"></param>
         public void FillDataTest(int n)
         {
             for(int i = 0; i <= n; i++)
@@ -42,12 +52,19 @@ namespace LibraryFramework.Models
             }
         }
 
+        /// <summary>
+        /// This method creates a new user. 
+        /// </summary>
+        /// <param name="name">user name</param>
+        /// <param name="login">unique user login</param>
+        /// <param name="password">user password</param>
+        /// <param name="isAdmin">boolean variable, if the user is registered as an administrator, the variable is equal to true, if as a guest - false</param>
+        /// <returns>If data was entered incorrectly method returns false, otherwise returns false.</returns>
         public bool Register(string name, string login, string password, bool isAdmin)
         {
             int passwordHash = password.GetHashCode();
             if (IsInList(login))
             {
-                // A user with this login already exists.
                 return false;
             }
             if (isAdmin)
@@ -67,6 +84,12 @@ namespace LibraryFramework.Models
             return true;
         }
 
+        /// <summary>
+        /// Authorizes user. Requests login and password.
+        /// </summary>
+        /// <param name="login">user login</param>
+        /// <param name="password">user password</param>
+        /// <returns>If data was entered incorrectly method returns false, otherwise returns false.</returns>
         public bool Authorize(string login, string password)
         {
             int passwordHash = password.GetHashCode();
@@ -89,6 +112,15 @@ namespace LibraryFramework.Models
             return false;
         }
 
+        /// <summary>
+        /// This method creates new book and adds it to the library.
+        /// </summary>
+        /// <param name="name">book name</param>
+        /// <param name="authorName">author name</param>
+        /// <param name="genreName">genre name</param>
+        /// <param name="year">year of publication of the book</param>
+        /// <param name="annotation">annotation</param>
+        /// <returns></returns>
         public Book AddBook(string name, string authorName, string genreName, int year, string annotation)
         {
             Book book = new Book(name, GetAuthor(authorName), GetGenre(genreName), year, annotation);
@@ -203,6 +235,60 @@ namespace LibraryFramework.Models
                     booksDao.Save(Books);
                 }
             }
+        }
+        public void SortBookName(Book[] books)
+        {
+            for(int i = 0; i < books.Length; i++)
+            {
+                for(int j = 0; j < books.Length - 1; j++)
+                {
+                    if (NeedToOrder(books[j].Name, books[j+1].Name))
+                    {
+                        Book temp = books[j];
+                        books[j] = books[j + 1];
+                        books[j + 1] = temp;
+                    }
+                }
+            }
+        }
+        public void SortAuthorName(Author[] authors)
+        {
+            for (int i = 0; i < authors.Length; i++)
+            {
+                for (int j = 0; j < authors.Length - 1; j++)
+                {
+                    if (NeedToOrder(authors[j].Name, authors[j + 1].Name))
+                    {
+                        Author temp = authors[j];
+                        authors[j] = authors[j + 1];
+                        authors[j + 1] = temp;
+                    }
+                }
+            }
+        }
+        public void SortGenreName(Genre[] genres)
+        {
+            for (int i = 0; i < genres.Length; i++)
+            {
+                for (int j = 0; j < genres.Length - 1; j++)
+                {
+                    if (NeedToOrder(genres[j].Name, genres[j + 1].Name))
+                    {
+                        Genre temp = genres[j];
+                        genres[j] = genres[j + 1];
+                        genres[j + 1] = temp;
+                    }
+                }
+            }
+        }
+        private bool NeedToOrder(string str1, string str2)
+        {
+            for(int i = 0; i < (str1.Length < str2.Length ? str1.Length : str2.Length); i++)
+            {
+                if (str1.ToCharArray()[i] < str2.ToCharArray()[i]) return false;
+                if (str1.ToCharArray()[i] > str2.ToCharArray()[i]) return true;
+            }
+            return false;
         }
 
         private Author GetAuthor(string authorName)

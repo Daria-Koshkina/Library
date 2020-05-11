@@ -15,6 +15,7 @@ namespace LibraryApp
     {
         public Library Library { private set; get; }
         public bool IsAdmin { private set; get; }
+        public Book[] ListboxElements { private set; get; }
         public Sections(Library library, bool isAdmin)
         {
             Library = library;
@@ -35,14 +36,14 @@ namespace LibraryApp
             this.Hide();
             new EmptyBook(Library, IsAdmin, getBook()).ShowDialog(this);
             this.Show();
-            printListOfBooks();
+            UpdteListOfBooks();
 
         }
         public Book getBook()
         {
             foreach (Book thisBook in Library.Books)
             {
-                if (thisBook.Id == Library.ListOfBooksByGenre(getGenre().Id)[books.SelectedIndex].Id)
+                if (thisBook.Id == ListboxElements[books.SelectedIndex].Id)
                 {
                     return thisBook;
                 }
@@ -63,17 +64,18 @@ namespace LibraryApp
 
         private void list_of_genres_SelectedIndexChanged(object sender, EventArgs e)
         {
-            printListOfBooks();
+            ListboxElements = Library.ListOfBooksByGenre(getGenre().Id);
+            Library.SortBookName(ListboxElements);
+            UpdteListOfBooks();
         }
-        public void printListOfBooks()
+        public void UpdteListOfBooks()
         {
             books.Items.Clear();
-            Book[] listbox_elements = Library.ListOfBooksByGenre(getGenre().Id);
-            foreach (Book book in listbox_elements)
+            foreach (Book book in ListboxElements)
             {
                 books.Items.Add(book.Name);
             }
-            if(books.Items.Count == 0)
+            if (books.Items.Count == 0)
             {
                 list_of_genres.Items.Clear();
                 foreach (Genre genre in Library.Genres)
