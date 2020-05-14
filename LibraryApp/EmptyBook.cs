@@ -23,6 +23,11 @@ namespace LibraryApp
             Book = book;
             InitializeComponent();
             if(Book != null) this.Text = $"Book {Book.Name}";
+            if(Book == null)
+            {
+                delete_book.Hide();
+            }
+
             else this.Text = "Book";
             if(IsAdmin == false)
             {
