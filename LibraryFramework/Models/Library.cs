@@ -528,13 +528,13 @@ namespace LibraryFramework.Models
 
             if(Books.Count == 0)
             {
-                for(int i = 0; i < Authors.Count; i++)
+                while(Authors.Count > 0)
                 {
-                    deleteAutor(Authors[i].Id);
+                    deleteAutor(Authors[0].Id);
                 }
-                for(int j = 0; j < Genres.Count; j++)
+                while(Genres.Count > 0)
                 {
-                    deleteGenre(Genres[j].Id);
+                    deleteGenre(Genres[0].Id);
                 }
             }
         }

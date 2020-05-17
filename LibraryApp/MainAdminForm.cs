@@ -1,9 +1,11 @@
-﻿using LibraryFramework.Models;
+﻿using LibraryApp.Properties;
+using LibraryFramework.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -79,6 +81,34 @@ namespace LibraryApp
             {
                 Application.Exit();
             }
+        }
+
+        private void help_Click(object sender, EventArgs e)
+        {
+            bool isAdminFlag = false;
+            foreach(Admin admin in Library.Admins)
+            {
+                if(admin.Id == Library.CurrentUser.Id)
+                {
+                    isAdminFlag = true;
+                    break;
+                }
+            }
+            this.Hide();
+            new HelpForm(isAdminFlag).ShowDialog(this);
+            this.Show();
+        }
+
+        private void libraryAutocomplete_Click(object sender, EventArgs e)
+        {
+            Stream stream = new MemoryStream(Resources.bookTest);
+            var serializer = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+            List<Book> listOfBooks = (List<Book>)serializer.Deserialize(stream);
+            foreach(Book book in listOfBooks)
+            {
+                Library.AddBook(book.Name, book.Author.Name, book.Genre.Name, book.Year, book.Annotation);
+            }
+
         }
     }
 }

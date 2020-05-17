@@ -17,12 +17,11 @@ namespace LibraryApp
         static void Main()
         {
             Library library = new Library();
-            // library.FillDataTest(10);
+            //library.FillDataTest(10);
 
 
-            //Application.EnableVisualStyles();
-            //Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new RegistrationForm());
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new AuthorizationForm(library));
         }
     }

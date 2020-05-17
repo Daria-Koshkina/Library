@@ -117,49 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AdminHelp" xml:space="preserve">
-    <value>ADMIN HELP
-
-You are in the home library application.
-
-To automatically fill the library with test data, click the "Library Autocomplete" button.
-
-To view sections of the library, click the "Sections" button and select the needed genre from the drop-down list. For this genre, a list of books that you can see will appear below.
-
-If you choose a book, a form with the characteristics of the selected book will be displayed.
-
-The user can take a book to read by checking the "Read now" or like it by checking the "Press like". To delete a book, the user needs to click the "Delete book" button, and then confirm their actions in the warning pop-up window. 
-
-To find a book in the library from the main menu, go to the "Search" section. In the search box, enter the name of the book or name of the author and click the "Search" button.
-
-To add a new book, go to the "Add new book" section. A form will open where you need to fill in the data and click the "Save" button.
-The user can take an inventory of the library. To do this, go to the "Inventory" section. In open window there is a list of all books in the library. You can sort the list by author, genre or book name by selecting the appropriate radio button at the top of the form. 
-The user can view all books, delete some of them, and also take a read or like. 
-At the bottom of the form there is an inscription that displays the number of all books in the library.
-
-To exit the account, click the "LOG OUT" button.
-To complete the application, click the "EXIT" button.</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="bookTest" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bookTest.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="GuestHelp" xml:space="preserve">
-    <value>GUEST HELP
-
-You are in the home library application.
-
-To automatically fill the library with test data, click the "Library Autocomplete" button.
-
-To view sections of the library, click the "Sections" button and select the needed genre from the drop-down list. For this genre, a list of books that you can see will appear below.
-
-If you choose a book, a form with the characteristics of the selected book will be displayed.
-
-The user can take a book to read by checking the "Read now" or like it by checking the "Press like".
-
-To find a book in the library from the main menu, go to the "Search" section. In the search box, enter the name of the book or name of the author and click the "Search" button.
-
-To exit the account, click the "LOG OUT" button.
-To complete the application, click the "EXIT" button.</value>
-  </data>
+  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
 </root>

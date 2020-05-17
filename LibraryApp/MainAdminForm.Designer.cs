@@ -43,6 +43,8 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
+            this.help = new System.Windows.Forms.Button();
+            this.libraryAutocomplete = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.SuspendLayout();
@@ -271,12 +273,34 @@
             this.button1.TabIndex = 0;
             this.button1.UseVisualStyleBackColor = false;
             // 
+            // help
+            // 
+            this.help.Location = new System.Drawing.Point(358, 432);
+            this.help.Name = "help";
+            this.help.Size = new System.Drawing.Size(75, 23);
+            this.help.TabIndex = 25;
+            this.help.Text = "Help";
+            this.help.UseVisualStyleBackColor = true;
+            this.help.Click += new System.EventHandler(this.help_Click);
+            // 
+            // libraryAutocomplete
+            // 
+            this.libraryAutocomplete.Location = new System.Drawing.Point(574, 432);
+            this.libraryAutocomplete.Name = "libraryAutocomplete";
+            this.libraryAutocomplete.Size = new System.Drawing.Size(131, 23);
+            this.libraryAutocomplete.TabIndex = 26;
+            this.libraryAutocomplete.Text = "Library Autocomplete";
+            this.libraryAutocomplete.UseVisualStyleBackColor = true;
+            this.libraryAutocomplete.Click += new System.EventHandler(this.libraryAutocomplete_Click);
+            // 
             // MainAdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PeachPuff;
             this.ClientSize = new System.Drawing.Size(916, 615);
+            this.Controls.Add(this.libraryAutocomplete);
+            this.Controls.Add(this.help);
             this.Controls.Add(this.exit);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.log_out);
@@ -310,5 +334,7 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button help;
+        private System.Windows.Forms.Button libraryAutocomplete;
     }
 }
