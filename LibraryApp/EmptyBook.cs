@@ -45,7 +45,7 @@ namespace LibraryApp
                 year.Value = Book.Year;
                 year.Enabled = false;
                 annotation.Text = Book.Annotation;
-                annotation.Enabled = false;
+                annotation.ReadOnly = true;
                 if (Book.userId == Library.CurrentUser.Id)
                 {
                     read_now.Checked = true;

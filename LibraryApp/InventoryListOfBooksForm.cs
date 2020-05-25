@@ -32,19 +32,32 @@ namespace LibraryApp
         private void inventoryListOfBooks_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.Hide();
+            if(getBook() == null)
+            {
+                this.Show();
+                return;
+            }
             new EmptyBook(Library, IsAdmin, getBook()).ShowDialog(this);
             this.Show();
             prinListOfBooks();
         }
         public Book getBook()
         {
-            foreach (Book thisBook in Library.Books)
+            try
             {
-                if (thisBook.Id == Books[inventoryListOfBooks.SelectedIndex].Id)
+                foreach (Book thisBook in Library.Books)
                 {
-                    return thisBook;
+                    if (thisBook.Id == Books[inventoryListOfBooks.SelectedIndex].Id)
+                    {
+                        return thisBook;
+                    }
                 }
             }
+            catch
+            {
+                return null;
+            }
+            
             return null;
         }
         public void prinListOfBooks()

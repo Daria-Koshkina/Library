@@ -76,23 +76,38 @@ namespace LibraryApp
         }
         public Author getAuthor()
         {
-            foreach (Author thisAuthor in Library.Authors)
+            try
             {
-                if (thisAuthor.Id == AuthorsList[list.SelectedIndex].Id)
+                foreach (Author thisAuthor in Library.Authors)
                 {
-                    return thisAuthor;
+                    if (thisAuthor.Id == AuthorsList[list.SelectedIndex].Id)
+                    {
+                        return thisAuthor;
+                    }
                 }
             }
+            catch
+            {
+                return null;
+            }
+            
             return null;
         }
         public Genre getGenre()
         {
-            foreach (Genre thisGenre in Library.Genres)
+            try
             {
-                if (thisGenre.Id == GenresList[list.SelectedIndex].Id)
+                foreach (Genre thisGenre in Library.Genres)
                 {
-                    return thisGenre;
+                    if (thisGenre.Id == GenresList[list.SelectedIndex].Id)
+                    {
+                        return thisGenre;
+                    }
                 }
+            }
+            catch
+            {
+                return null;
             }
             return null;
         }
@@ -101,16 +116,19 @@ namespace LibraryApp
         {
             if (sortedByName.Checked)
             {
+                if (getBook() == null) return;
                 new EmptyBook(Library, IsAdmin, getBook()).ShowDialog(this);
                 UpdateListOfBooks();
             }
             if (sortedByAuthor.Checked)
             {
+                if (getAuthor() == null) return;
                 new InventoryListOfBooksForm(Library, IsAdmin, getAuthor().Id, true).ShowDialog(this);
                 UpdateListOfAuthors();
             }
             if(sortedByGenre.Checked)
             {
+                if (getGenre() == null) return;
                 new InventoryListOfBooksForm(Library, IsAdmin, getGenre().Id, false).ShowDialog(this);
                 UpdateListOfGenres();
             }

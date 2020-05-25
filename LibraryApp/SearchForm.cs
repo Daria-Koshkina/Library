@@ -26,11 +26,6 @@ namespace LibraryApp
 
         private void buttonSearch_Click(object sender, EventArgs e)
         {
-            string searchString = textBoxSearch.Text.Trim();
-            if (searchString.Length == 0) return;
-
-            SearchBooks = Library.Search(searchString);
-            Library.SortBookName(SearchBooks);
             UpdateListOfBooks();
         }
 
@@ -55,6 +50,10 @@ namespace LibraryApp
 
         public void UpdateListOfBooks()
         {
+            string searchString = textBoxSearch.Text.Trim();
+            if (searchString.Length == 0) return;
+            SearchBooks = Library.Search(searchString);
+            Library.SortBookName(SearchBooks);
             books.Items.Clear();
             foreach (Book book in SearchBooks)
             {

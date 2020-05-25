@@ -34,6 +34,10 @@ namespace LibraryApp
         private void books_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.Hide();
+            if(getBook() == null) {
+                this.Show();
+                return;
+            }
             new EmptyBook(Library, IsAdmin, getBook()).ShowDialog(this);
             this.Show();
             UpdteListOfBooks();
@@ -41,12 +45,19 @@ namespace LibraryApp
         }
         public Book getBook()
         {
-            foreach (Book thisBook in Library.Books)
+            try
             {
-                if (thisBook.Id == ListboxElements[books.SelectedIndex].Id)
+                foreach (Book thisBook in Library.Books)
                 {
-                    return thisBook;
+                    if (thisBook.Id == ListboxElements[books.SelectedIndex].Id)
+                    {
+                        return thisBook;
+                    }
                 }
+            }
+            catch(System.IndexOutOfRangeException)
+            {
+                return null;
             }
             return null;
         }
@@ -64,12 +75,12 @@ namespace LibraryApp
 
         private void list_of_genres_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ListboxElements = Library.ListOfBooksByGenre(getGenre().Id);
-            Library.SortBookName(ListboxElements);
             UpdteListOfBooks();
         }
         public void UpdteListOfBooks()
         {
+            ListboxElements = Library.ListOfBooksByGenre(getGenre().Id);
+            Library.SortBookName(ListboxElements);
             books.Items.Clear();
             foreach (Book book in ListboxElements)
             {

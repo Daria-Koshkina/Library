@@ -29,18 +29,30 @@ namespace LibraryApp
         private void list_of_books_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.Hide();
+            if(getBook() == null)
+            {
+                this.Show();
+                return;
+            }
             new EmptyBook(Library, IsAdmin, getBook()).ShowDialog(this);
             this.Show();
             UpdateListOfLikedBooks();
         }
         public Book getBook()
         {
-            foreach (Book thisBook in Library.Books)
+            try
             {
-                if (thisBook.Id == BooksReadNow[list_of_books.SelectedIndex].Id)
+                foreach (Book thisBook in Library.Books)
                 {
-                    return thisBook;
+                    if (thisBook.Id == BooksReadNow[list_of_books.SelectedIndex].Id)
+                    {
+                        return thisBook;
+                    }
                 }
+            }
+            catch
+            {
+                return null;
             }
             return null;
         }

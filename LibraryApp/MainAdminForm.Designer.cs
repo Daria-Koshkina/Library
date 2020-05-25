@@ -51,8 +51,7 @@
             // 
             // sections
             // 
-            this.sections.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.sections.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.sections.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.sections.BackColor = System.Drawing.Color.SandyBrown;
@@ -63,8 +62,8 @@
             this.sections.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.sections.ForeColor = System.Drawing.Color.SaddleBrown;
             this.sections.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.sections.Location = new System.Drawing.Point(259, 65);
-            this.sections.MaximumSize = new System.Drawing.Size(620, 50);
+            this.sections.Location = new System.Drawing.Point(259, 88);
+            this.sections.MaximumSize = new System.Drawing.Size(820, 50);
             this.sections.MinimumSize = new System.Drawing.Size(270, 30);
             this.sections.Name = "sections";
             this.sections.Size = new System.Drawing.Size(520, 47);
@@ -75,8 +74,7 @@
             // 
             // add_book
             // 
-            this.add_book.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.add_book.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.add_book.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.add_book.BackColor = System.Drawing.Color.SandyBrown;
@@ -85,8 +83,8 @@
             this.add_book.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.add_book.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.add_book.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.add_book.Location = new System.Drawing.Point(259, 280);
-            this.add_book.MaximumSize = new System.Drawing.Size(620, 50);
+            this.add_book.Location = new System.Drawing.Point(259, 303);
+            this.add_book.MaximumSize = new System.Drawing.Size(820, 50);
             this.add_book.MinimumSize = new System.Drawing.Size(270, 30);
             this.add_book.Name = "add_book";
             this.add_book.Size = new System.Drawing.Size(520, 47);
@@ -97,8 +95,7 @@
             // 
             // log_out
             // 
-            this.log_out.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.log_out.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.log_out.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.log_out.BackColor = System.Drawing.Color.SandyBrown;
@@ -108,7 +105,7 @@
             this.log_out.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.log_out.ForeColor = System.Drawing.Color.SaddleBrown;
             this.log_out.Location = new System.Drawing.Point(259, 496);
-            this.log_out.MaximumSize = new System.Drawing.Size(620, 50);
+            this.log_out.MaximumSize = new System.Drawing.Size(820, 50);
             this.log_out.MinimumSize = new System.Drawing.Size(270, 30);
             this.log_out.Name = "log_out";
             this.log_out.Size = new System.Drawing.Size(520, 47);
@@ -119,8 +116,7 @@
             // 
             // inventory
             // 
-            this.inventory.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.inventory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.inventory.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.inventory.BackColor = System.Drawing.Color.SandyBrown;
@@ -129,8 +125,8 @@
             this.inventory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.inventory.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.inventory.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.inventory.Location = new System.Drawing.Point(259, 354);
-            this.inventory.MaximumSize = new System.Drawing.Size(620, 50);
+            this.inventory.Location = new System.Drawing.Point(259, 377);
+            this.inventory.MaximumSize = new System.Drawing.Size(820, 50);
             this.inventory.MinimumSize = new System.Drawing.Size(270, 30);
             this.inventory.Name = "inventory";
             this.inventory.Size = new System.Drawing.Size(520, 47);
@@ -141,8 +137,7 @@
             // 
             // search
             // 
-            this.search.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.search.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.search.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.search.BackColor = System.Drawing.Color.SandyBrown;
@@ -151,8 +146,8 @@
             this.search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.search.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.search.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.search.Location = new System.Drawing.Point(259, 208);
-            this.search.MaximumSize = new System.Drawing.Size(620, 50);
+            this.search.Location = new System.Drawing.Point(259, 231);
+            this.search.MaximumSize = new System.Drawing.Size(820, 50);
             this.search.MinimumSize = new System.Drawing.Size(270, 30);
             this.search.Name = "search";
             this.search.Size = new System.Drawing.Size(520, 47);
@@ -163,8 +158,7 @@
             // 
             // read_now
             // 
-            this.read_now.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.read_now.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.read_now.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.read_now.BackColor = System.Drawing.Color.SandyBrown;
@@ -173,8 +167,8 @@
             this.read_now.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.read_now.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.read_now.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.read_now.Location = new System.Drawing.Point(259, 136);
-            this.read_now.MaximumSize = new System.Drawing.Size(620, 50);
+            this.read_now.Location = new System.Drawing.Point(259, 159);
+            this.read_now.MaximumSize = new System.Drawing.Size(820, 50);
             this.read_now.MinimumSize = new System.Drawing.Size(270, 30);
             this.read_now.Name = "read_now";
             this.read_now.Size = new System.Drawing.Size(520, 47);
@@ -185,8 +179,7 @@
             // 
             // exit
             // 
-            this.exit.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.exit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.exit.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.exit.BackColor = System.Drawing.Color.SandyBrown;
@@ -196,7 +189,7 @@
             this.exit.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.exit.ForeColor = System.Drawing.Color.SaddleBrown;
             this.exit.Location = new System.Drawing.Point(479, 556);
-            this.exit.MaximumSize = new System.Drawing.Size(150, 50);
+            this.exit.MaximumSize = new System.Drawing.Size(250, 50);
             this.exit.MinimumSize = new System.Drawing.Size(70, 30);
             this.exit.Name = "exit";
             this.exit.Size = new System.Drawing.Size(80, 47);
@@ -275,22 +268,26 @@
             // 
             // help
             // 
-            this.help.Location = new System.Drawing.Point(358, 432);
+            this.help.BackColor = System.Drawing.Color.SandyBrown;
+            this.help.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.help.Location = new System.Drawing.Point(140, 4);
             this.help.Name = "help";
-            this.help.Size = new System.Drawing.Size(75, 23);
+            this.help.Size = new System.Drawing.Size(126, 23);
             this.help.TabIndex = 25;
             this.help.Text = "Help";
-            this.help.UseVisualStyleBackColor = true;
+            this.help.UseVisualStyleBackColor = false;
             this.help.Click += new System.EventHandler(this.help_Click);
             // 
             // libraryAutocomplete
             // 
-            this.libraryAutocomplete.Location = new System.Drawing.Point(574, 432);
+            this.libraryAutocomplete.BackColor = System.Drawing.Color.SandyBrown;
+            this.libraryAutocomplete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.libraryAutocomplete.Location = new System.Drawing.Point(277, 4);
             this.libraryAutocomplete.Name = "libraryAutocomplete";
             this.libraryAutocomplete.Size = new System.Drawing.Size(131, 23);
             this.libraryAutocomplete.TabIndex = 26;
             this.libraryAutocomplete.Text = "Library Autocomplete";
-            this.libraryAutocomplete.UseVisualStyleBackColor = true;
+            this.libraryAutocomplete.UseVisualStyleBackColor = false;
             this.libraryAutocomplete.Click += new System.EventHandler(this.libraryAutocomplete_Click);
             // 
             // MainAdminForm
